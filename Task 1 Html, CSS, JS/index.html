@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internee.pk - Virtual Internship Platform</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #218838;
+        }
+
+        /* About Section */
+        .about {
+            background: #fff;
+            padding: 50px 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #28a745;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .contact input {
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+        }
+
+        .contact button {
+            padding: 10px;
+            background: white;
+            color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background: #ddd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">Internee.pk</div>
+        <nav>
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Internship</a></li>
+                <li><a href="#">Graduate Program</a></li>
+                <li><a href="#">Company Collaboration</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Looking for a Dream Internship?</h1>
+        <p>Kickstart your career with hands-on industry experience.</p>
+        <a href="#" class="btn">Explore Opportunities</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>Why Choose Us?</h2>
+        <p>We provide hands-on training, expert mentorship, and real-world experience to prepare you for your dream job.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Get in Touch</h2>
+        <form id="contactForm">
+            <input type="email" id="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+        <p id="msg"></p>
+    </section>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("show");
+        }
+
+        // Form Validation
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const msg = document.getElementById("msg");
+
+            if (validateEmail(email)) {
+                msg.style.color = "green";
+                msg.textContent = "Successfully Subscribed!";
+            } else {
+                msg.style.color = "red";
+                msg.textContent = "Please enter a valid email address.";
+            }
+        });
+
+        // Email Validation Function
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+
+</body>
+</html>
